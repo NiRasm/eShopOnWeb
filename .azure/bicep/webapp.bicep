@@ -1,12 +1,18 @@
 param webAppName string = uniqueString(resourceGroup().id)// Generate unique String for web app name
 param sku string = 'B1' // The SKU of App Service Plan
 param location string = resourceGroup().location
+param tags object = {
+  'Project Name':'TEST'
+  Environment:'NRA_Sandbox'
+  Ownership:'NRA'
+}
 
 var appServicePlanName = toLower('AppServicePlan-${webAppName}')
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   name: appServicePlanName
   location: location
+  tags: tags
   properties: {
     reserved: true
   }
