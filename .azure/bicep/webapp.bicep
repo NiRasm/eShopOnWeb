@@ -25,6 +25,7 @@ resource appService 'Microsoft.Web/sites@2020-06-01' = {
   name: webAppName
   kind: 'app'
   location: location
+  tags: tags
   properties: {
     serverFarmId: appServicePlan.id
     siteConfig: {
